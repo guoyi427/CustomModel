@@ -8,6 +8,9 @@
 
 #import "CMHomeViewController.h"
 
+//  View
+#import "CMHomeCollectionView.h"
+
 @interface CMHomeViewController ()
 
 @end
@@ -16,8 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor magentaColor];
+    [self _prepareUI];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,14 +27,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Prepare
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)_prepareUI {
+    self.view.backgroundColor = [UIColor magentaColor];
+
+    CMHomeCollectionView *collectionView = [CMHomeCollectionView collectionViewWithFrame:CGRectMake(0, _height_naviBar + _height_statusBar, _width_screen, _height_screen - _height_tabBar - _height_naviBar - _height_statusBar)];
+    [self.view addSubview:collectionView];
 }
-*/
 
 @end

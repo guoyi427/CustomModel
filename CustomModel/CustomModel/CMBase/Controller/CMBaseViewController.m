@@ -14,9 +14,22 @@
 
 @implementation CMBaseViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _width_screen = [UIScreen mainScreen].bounds.size.width;
+        _height_screen = [UIScreen mainScreen].bounds.size.height;
+        _height_naviBar = 30;
+        _height_tabBar = 49;
+        _height_statusBar = 20;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning {
