@@ -49,4 +49,15 @@
     [_imageView sd_setImageWithURL:cellModel.imageURL];
 }
 
+#pragma mark - Private Method
+
+//缩放图片到指定的size
+- (UIImage *)scaleToSize:(CGSize)tarSize andImage:(UIImage *)originImage {
+    UIGraphicsBeginImageContext(tarSize);
+    [originImage drawInRect:CGRectMake(0, 0, tarSize.width, tarSize.height)];
+    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return resultImage;
+}
+
 @end

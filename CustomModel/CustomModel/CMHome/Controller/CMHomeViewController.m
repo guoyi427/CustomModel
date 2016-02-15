@@ -10,8 +10,10 @@
 
 //  View
 #import "CMHomeCollectionView.h"
+//  Controller
+#import "CMDetailViewController.h"
 
-@interface CMHomeViewController ()
+@interface CMHomeViewController () <CMHomeCollectionViewDelegate>
 
 @end
 
@@ -32,8 +34,16 @@
 - (void)_prepareUI {
     self.view.backgroundColor = [UIColor magentaColor];
 
-    CMHomeCollectionView *collectionView = [CMHomeCollectionView collectionViewWithFrame:CGRectMake(0, _height_naviBar + _height_statusBar, _width_screen, _height_screen - _height_tabBar - _height_naviBar - _height_statusBar)];
+    CMHomeCollectionView *collectionView = [CMHomeCollectionView collectionViewWithFrame:CGRectMake(0, 0, _width_screen, _height_screen)];
+    collectionView.homeDelegate = self;
     [self.view addSubview:collectionView];
+}
+
+#pragma mark - CMHomeCollectionView - Delegate
+
+- (void)homeCollectionView:(CMHomeCollectionView *)collectionView didSelectedCellAtModel:(CMHomeCellModel *)model {
+    CMDetailViewController *detailVC = [[CMDetailViewController alloc] initWithModel:model];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 @end

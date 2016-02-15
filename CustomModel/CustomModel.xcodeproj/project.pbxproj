@@ -35,6 +35,9 @@
 		28039EA81C71BADC0073549B /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28039E981C71BADC0073549B /* UIView+WebCacheOperation.m */; };
 		28039EAC1C71BB2A0073549B /* CMHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28039EAB1C71BB2A0073549B /* CMHomeCell.m */; };
 		28039EAF1C71C3430073549B /* CMHomeCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28039EAE1C71C3430073549B /* CMHomeCellModel.m */; };
+		28039EB21C71D2770073549B /* CMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28039EB11C71D2770073549B /* CMDetailViewController.m */; };
+		28039EB61C71D6000073549B /* ModelResource.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28039EB51C71D6000073549B /* ModelResource.plist */; };
+		28039EB91C71DEC00073549B /* CMRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28039EB81C71DEC00073549B /* CMRequestManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +116,11 @@
 		28039EAB1C71BB2A0073549B /* CMHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMHomeCell.m; sourceTree = "<group>"; };
 		28039EAD1C71C3430073549B /* CMHomeCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMHomeCellModel.h; sourceTree = "<group>"; };
 		28039EAE1C71C3430073549B /* CMHomeCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMHomeCellModel.m; sourceTree = "<group>"; };
+		28039EB01C71D2770073549B /* CMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDetailViewController.h; sourceTree = "<group>"; };
+		28039EB11C71D2770073549B /* CMDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDetailViewController.m; sourceTree = "<group>"; };
+		28039EB51C71D6000073549B /* ModelResource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ModelResource.plist; sourceTree = "<group>"; };
+		28039EB71C71DEC00073549B /* CMRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMRequestManager.h; sourceTree = "<group>"; };
+		28039EB81C71DEC00073549B /* CMRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMRequestManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +182,7 @@
 				28039E291C71746A0073549B /* Assets.xcassets */,
 				28039E2B1C71746A0073549B /* LaunchScreen.storyboard */,
 				28039E2E1C71746A0073549B /* Info.plist */,
+				28039EB51C71D6000073549B /* ModelResource.plist */,
 				28039E1D1C71746A0073549B /* Supporting Files */,
 			);
 			path = CustomModel;
@@ -229,6 +238,8 @@
 		28039E521C7175030073549B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				28039EB71C71DEC00073549B /* CMRequestManager.h */,
+				28039EB81C71DEC00073549B /* CMRequestManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,6 +266,8 @@
 			children = (
 				28039E631C7175310073549B /* CMHomeViewController.h */,
 				28039E641C7175310073549B /* CMHomeViewController.m */,
+				28039EB01C71D2770073549B /* CMDetailViewController.h */,
+				28039EB11C71D2770073549B /* CMDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -556,6 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28039E2D1C71746A0073549B /* LaunchScreen.storyboard in Resources */,
+				28039EB61C71D6000073549B /* ModelResource.plist in Resources */,
 				28039E2A1C71746A0073549B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,12 +601,14 @@
 				28039E9B1C71BADC0073549B /* SDImageCache.m in Sources */,
 				28039E9F1C71BADC0073549B /* SDWebImageDownloaderOperation.m in Sources */,
 				28039EA81C71BADC0073549B /* UIView+WebCacheOperation.m in Sources */,
+				28039EB21C71D2770073549B /* CMDetailViewController.m in Sources */,
 				28039EAF1C71C3430073549B /* CMHomeCellModel.m in Sources */,
 				28039E651C7175310073549B /* CMHomeViewController.m in Sources */,
 				28039EA21C71BADC0073549B /* UIButton+WebCache.m in Sources */,
 				28039E9A1C71BADC0073549B /* NSData+ImageContentType.m in Sources */,
 				28039EA11C71BADC0073549B /* SDWebImagePrefetcher.m in Sources */,
 				28039E9E1C71BADC0073549B /* SDWebImageDownloader.m in Sources */,
+				28039EB91C71DEC00073549B /* CMRequestManager.m in Sources */,
 				28039E681C7177D90073549B /* CMTabBarController.m in Sources */,
 				28039EA51C71BADC0073549B /* UIImage+WebP.m in Sources */,
 				28039EA71C71BADC0073549B /* UIImageView+WebCache.m in Sources */,

@@ -51,7 +51,8 @@
 - (void)_prepareViewControllers {
     CMHomeViewController *homeVC = [[CMHomeViewController alloc] init];
     homeVC.title = @"首页";
-    self.viewControllers = @[homeVC];
+    UINavigationController *naviHomeC = [[UINavigationController alloc] initWithRootViewController:homeVC];
+    self.viewControllers = @[naviHomeC];
 }
 
 @end

@@ -1,35 +1,37 @@
 //
-//  CMBaseViewController.m
+//  CMDetailViewController.m
 //  CustomModel
 //
 //  Created by guoyi on 16/2/15.
 //  Copyright © 2016年 郭毅. All rights reserved.
 //
 
-#import "CMBaseViewController.h"
+#import "CMDetailViewController.h"
 
-@interface CMBaseViewController ()
+//Model
+#import "CMHomeCellModel.h"
+#import "CMRequestManager.h"
+
+@interface CMDetailViewController ()
 
 @end
 
-@implementation CMBaseViewController
+@implementation CMDetailViewController
 
-- (instancetype)init
-{
+- (instancetype)initWithModel:(CMHomeCellModel *)model {
     self = [super init];
     if (self) {
-        _width_screen = [UIScreen mainScreen].bounds.size.width;
-        _height_screen = [UIScreen mainScreen].bounds.size.height;
-        _height_naviBar = 44;
-        _height_tabBar = 49;
-        _height_statusBar = 20;
+        self.model = model;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.title = _model.modelID;
     
+    [[CMRequestManager sharedRequestManager] downloadStlFileWithUrlString:@"http://image.3dhoo.com:8010/Code/DownLoad.cfm?stl=mSLDxXP0CXk7F12pU%2FrPoeQEgYWz1XME3vx8VCVJ0G1kZQAjS9Mdom8wHajhuBKx&dlname=消防车1"];
 }
 
 - (void)didReceiveMemoryWarning {

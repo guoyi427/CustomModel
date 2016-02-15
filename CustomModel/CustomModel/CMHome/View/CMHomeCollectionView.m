@@ -49,40 +49,11 @@ static NSString *Identifer_Cell = @"homeCollectionCell";
 
 - (void)_prepareData {
     _modelList = [[NSMutableArray alloc] init];
-    NSArray *imageURLs = @[@"http://image.3dhoo.com:8010/NewsDescImages/20150214/150214_170207_29075281.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150214/150214_170226_62815208.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150214/150214_170245_59676832.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150214/150214_170207_91889022.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150214/150214_170227_61248521.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150214/150214_170229_89755171.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150212/150212_170206_42464757.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150212/150212_170227_29546651.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150212/150212_170250_59002721.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150212/150212_170207_99621168.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150212/150212_170215_59201283.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150212/150212_170231_56423797.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150212/150212_170244_85581797.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150212/150212_170254_38003807.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150212/150212_170214_27712086.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150212/150212_170235_38999193.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150212/150212_170259_18731749.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150212/150212_170213_91712516.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150212/150212_170227_92036643.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150212/150212_170225_82180581.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150209/150209_180220_86973091.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150209/150209_180224_27557438.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150209/150209_170222_81968430.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150209/150209_170238_66525671.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150209/150209_170246_60925808.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150206/150206_160252_58678716.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150206/150206_160245_45457501.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150206/150206_160210_86674591.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150206/150206_160230_97445642.jpg",
-                           @"http://image.3dhoo.com:8010/NewsDescImages/20150205/150205_170242_67049139.jpg"];
+    NSArray *imageURLs = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ModelResource" ofType:@"plist"]];
     for (int i = 0; i < 30; i ++) {
         CMHomeCellModel *cellModel = [[CMHomeCellModel alloc] init];
-        cellModel.imageURL = [NSURL URLWithString:imageURLs[i]];
-        cellModel.modelID = [NSString stringWithFormat:@"%d",i];
+        cellModel.imageURL = [NSURL URLWithString:imageURLs[i][@"url"]];
+        cellModel.modelID = imageURLs[i][@"name"];
         [_modelList addObject:cellModel];
     }
     [self reloadData];
@@ -112,6 +83,18 @@ static NSString *Identifer_Cell = @"homeCollectionCell";
         [cell updateCellWithModel:cellModel];
     }
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    CMHomeCellModel *cellModel = nil;
+    if (_modelList.count > indexPath.row) {
+        cellModel = _modelList[indexPath.row];
+    }
+    
+    if (_homeDelegate &&
+        [_homeDelegate respondsToSelector:@selector(homeCollectionView:didSelectedCellAtModel:)]) {
+        [_homeDelegate homeCollectionView:self didSelectedCellAtModel:cellModel];
+    }
 }
 
 #pragma mark - UICollectionView Layout - Delegate
