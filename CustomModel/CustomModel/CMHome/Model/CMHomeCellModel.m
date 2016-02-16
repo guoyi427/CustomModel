@@ -10,4 +10,20 @@
 
 @implementation CMHomeCellModel
 
+/// 便利构造器
++ (instancetype)cellModelWithDic:(NSDictionary *)dic {
+    CMHomeCellModel *model = [[CMHomeCellModel alloc] initWithDic:dic];
+    return model;
+}
+
+- (instancetype)initWithDic:(NSDictionary *)dic {
+    self = [super init];
+    if (self) {
+        self.imageURL = dic[@"imageURL"];
+        self.name = dic[@"name"];
+        self.stl = dic[@"stl"];
+    }
+    return self;
+}
+
 @end

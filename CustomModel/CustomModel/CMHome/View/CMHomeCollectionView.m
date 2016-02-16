@@ -51,9 +51,7 @@ static NSString *Identifer_Cell = @"homeCollectionCell";
     _modelList = [[NSMutableArray alloc] init];
     NSArray *imageURLs = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ModelResource" ofType:@"plist"]];
     for (int i = 0; i < 30; i ++) {
-        CMHomeCellModel *cellModel = [[CMHomeCellModel alloc] init];
-        cellModel.imageURL = [NSURL URLWithString:imageURLs[i][@"url"]];
-        cellModel.modelID = imageURLs[i][@"name"];
+        CMHomeCellModel *cellModel = [CMHomeCellModel cellModelWithDic:imageURLs[i]];
         [_modelList addObject:cellModel];
     }
     [self reloadData];

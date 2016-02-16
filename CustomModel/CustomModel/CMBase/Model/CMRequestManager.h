@@ -8,10 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+@class CMRequestManager;
+@protocol CMRequestManagerDelegate <NSObject>
+
+- (void)requestManager:(CMRequestManager *)requestManager downloadProgress:(float)progress;
+
+@end
+
 @interface CMRequestManager : NSObject
+
+@property (nonatomic, weak) id<CMRequestManagerDelegate> cmDelegate;
 
 + (instancetype)sharedRequestManager;
 
-- (void)downloadStlFileWithUrlString:(NSString *)urlString;
+- (void)downloadStlFileWithStl:(NSString *)stl andName:(NSString *)name;
+
+- (void)cancelDownload;
 
 @end

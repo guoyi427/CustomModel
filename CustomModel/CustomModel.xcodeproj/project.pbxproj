@@ -38,6 +38,9 @@
 		28039EB21C71D2770073549B /* CMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28039EB11C71D2770073549B /* CMDetailViewController.m */; };
 		28039EB61C71D6000073549B /* ModelResource.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28039EB51C71D6000073549B /* ModelResource.plist */; };
 		28039EB91C71DEC00073549B /* CMRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28039EB81C71DEC00073549B /* CMRequestManager.m */; };
+		28CA840C1C72CC65002251A0 /* CMFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CA840B1C72CC65002251A0 /* CMFileManager.m */; };
+		28CA840F1C732CBA002251A0 /* CMProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CA840E1C732CBA002251A0 /* CMProgressBar.m */; };
+		28CA84121C7333E3002251A0 /* CMModelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CA84111C7333E3002251A0 /* CMModelView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +124,12 @@
 		28039EB51C71D6000073549B /* ModelResource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ModelResource.plist; sourceTree = "<group>"; };
 		28039EB71C71DEC00073549B /* CMRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMRequestManager.h; sourceTree = "<group>"; };
 		28039EB81C71DEC00073549B /* CMRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMRequestManager.m; sourceTree = "<group>"; };
+		28CA840A1C72CC65002251A0 /* CMFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMFileManager.h; sourceTree = "<group>"; };
+		28CA840B1C72CC65002251A0 /* CMFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMFileManager.m; sourceTree = "<group>"; };
+		28CA840D1C732CBA002251A0 /* CMProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMProgressBar.h; sourceTree = "<group>"; };
+		28CA840E1C732CBA002251A0 /* CMProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMProgressBar.m; sourceTree = "<group>"; };
+		28CA84101C7333E3002251A0 /* CMModelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMModelView.h; sourceTree = "<group>"; };
+		28CA84111C7333E3002251A0 /* CMModelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMModelView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +249,8 @@
 			children = (
 				28039EB71C71DEC00073549B /* CMRequestManager.h */,
 				28039EB81C71DEC00073549B /* CMRequestManager.m */,
+				28CA840A1C72CC65002251A0 /* CMFileManager.h */,
+				28CA840B1C72CC65002251A0 /* CMFileManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,6 +298,10 @@
 				28039EA91C71BB0F0073549B /* Cell */,
 				28039E6C1C71B3360073549B /* CMHomeCollectionView.h */,
 				28039E6D1C71B3360073549B /* CMHomeCollectionView.m */,
+				28CA840D1C732CBA002251A0 /* CMProgressBar.h */,
+				28CA840E1C732CBA002251A0 /* CMProgressBar.m */,
+				28CA84101C7333E3002251A0 /* CMModelView.h */,
+				28CA84111C7333E3002251A0 /* CMModelView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -603,6 +618,7 @@
 				28039EA81C71BADC0073549B /* UIView+WebCacheOperation.m in Sources */,
 				28039EB21C71D2770073549B /* CMDetailViewController.m in Sources */,
 				28039EAF1C71C3430073549B /* CMHomeCellModel.m in Sources */,
+				28CA840C1C72CC65002251A0 /* CMFileManager.m in Sources */,
 				28039E651C7175310073549B /* CMHomeViewController.m in Sources */,
 				28039EA21C71BADC0073549B /* UIButton+WebCache.m in Sources */,
 				28039E9A1C71BADC0073549B /* NSData+ImageContentType.m in Sources */,
@@ -614,9 +630,11 @@
 				28039EA71C71BADC0073549B /* UIImageView+WebCache.m in Sources */,
 				28039E9D1C71BADC0073549B /* SDWebImageDecoder.m in Sources */,
 				28039E6E1C71B3360073549B /* CMHomeCollectionView.m in Sources */,
+				28CA840F1C732CBA002251A0 /* CMProgressBar.m in Sources */,
 				28039E991C71BADC0073549B /* MKAnnotationView+WebCache.m in Sources */,
 				28039E9C1C71BADC0073549B /* SDWebImageCompat.m in Sources */,
 				28039E1F1C71746A0073549B /* main.m in Sources */,
+				28CA84121C7333E3002251A0 /* CMModelView.m in Sources */,
 				28039E621C7175190073549B /* CMBaseViewController.m in Sources */,
 				28039EA41C71BADC0073549B /* UIImage+MultiFormat.m in Sources */,
 				28039EA61C71BADC0073549B /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -840,6 +858,7 @@
 				28039E491C71746A0073549B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28039E4A1C71746A0073549B /* Build configuration list for PBXNativeTarget "CustomModelTests" */ = {
 			isa = XCConfigurationList;
@@ -848,6 +867,7 @@
 				28039E4C1C71746A0073549B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28039E4D1C71746A0073549B /* Build configuration list for PBXNativeTarget "CustomModelUITests" */ = {
 			isa = XCConfigurationList;
@@ -856,6 +876,7 @@
 				28039E4F1C71746A0073549B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

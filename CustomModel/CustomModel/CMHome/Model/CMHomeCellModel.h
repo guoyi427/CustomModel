@@ -10,7 +10,14 @@
 
 @interface CMHomeCellModel : NSObject
 
+/// 图片链接
 @property (nonatomic, strong) NSURL *imageURL;
-@property (nonatomic, strong) NSString *modelID;
+/// 模型stl编码
+@property (nonatomic, strong) NSString *stl;
+/// 模型名称
+@property (nonatomic, strong) NSString *name;
+
+/// 便利构造器
++ (instancetype)cellModelWithDic:(NSDictionary *)dic;
 
 @end

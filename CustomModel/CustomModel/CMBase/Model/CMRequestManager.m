@@ -8,11 +8,19 @@
 
 
 #import <UIKit/UIKit.h>
+
+//  Model
 #import "CMRequestManager.h"
+#import "CMFileManager.h"
 
-@interface CMRequestManager () <NSURLSessionDelegate>
-
+@interface CMRequestManager () <NSURLSessionDownloadDelegate>
+{
+    NSURLSessionDownloadTask *_downloadTask;
+    NSString *_modelName;
+}
 @end
+
+static NSString *Host_DownloadStlFile = @"http://image.3dhoo.com:8010/Code/DownLoad.cfm";
 
 @implementation CMRequestManager
 
@@ -36,36 +44,48 @@
 
 #pragma mark - Public Methods
 
-- (void)downloadStlFileWithUrlString:(NSString *)urlString {
-
+- (void)downloadStlFileWithStl:(NSString *)stl andName:(NSString *)name {
+    _modelName = name;
+    /// 中文名字 反编译成UTF8
+    NSString *percentEscapesName = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *percentSTL = [stl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet controlCharacterSet]];
+    NSString *urlString = [NSString stringWithFormat:@"%@?stl=%@&dlname=%@",Host_DownloadStlFile,percentSTL,percentEscapesName];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
                                                           delegate:self
                                                      delegateQueue:[NSOperationQueue mainQueue]];
-    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:[NSURL URLWithString:urlString]
-               completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                   if (error) {
-                       //   失败
-                       NSLog(@"download error = %@",error);
-                   } else {
-                       //   成功
-                       NSLog(@"downlaod success = %@",location);
-                       NSData *imageData = [NSData dataWithContentsOfURL:location];
-                       NSLog(@"image size = %lu",imageData.length);
-                   }
-               }];
-    [downloadTask resume];
-    
+    _downloadTask = [session downloadTaskWithURL:url];
+    [_downloadTask resume];
+}
+
+- (void)cancelDownload {
+    [_downloadTask cancelByProducingResumeData:^(NSData * _Nullable resumeData) {
+       //   保存resumeData 用于断点续传
+    }];
 }
 
 #pragma mark - NSURLSession Delegate
+
 
 - (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(nullable NSError *)error {
     
 }
 
-- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
- completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * __nullable credential))completionHandler {
-    
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
+didFinishDownloadingToURL:(NSURL *)location {
+    [[CMFileManager sharedFileManager] saveSTLFileWithTmpURL:location andModelName:_modelName];
+}
+
+- (void)URLSession:(NSURLSession *)session
+      downloadTask:(NSURLSessionDownloadTask *)downloadTask
+      didWriteData:(int64_t)bytesWritten
+ totalBytesWritten:(int64_t)totalBytesWritten
+totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
+    if (_cmDelegate &&
+        [_cmDelegate respondsToSelector:@selector(requestManager:downloadProgress:)]) {
+        [_cmDelegate requestManager:self downloadProgress:totalBytesWritten/(float)totalBytesExpectedToWrite];
+    }
 }
 
 @end
